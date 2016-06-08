@@ -6,7 +6,9 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-apt-get install wget tar
+apt-get update
+
+apt-get -y install wget tar make cmake
 
 #####################################################################
 ## begin update area
@@ -63,7 +65,7 @@ fi
 
 # before building OpenVAS here are the prerequisites for Ubuntu 14
 # this includes everything needed for PDF generation - if you don't want that, remove texlive-latex-extra because it saves about 800mb
-apt-get install build-essential bison flex cmake pkg-config libglib2.0-0 libglib2.0-dev libgnutls26 libgnutls-dev libpcap0.8 libpcap0.8-dev libgpgme11 libgpgme11-dev doxygen libuuid1 uuid-dev sqlfairy xmltoman libsqlite3-0 libsqlite3-dev libxml2-dev libxslt1.1 libxslt1-dev xsltproc libmicrohttpd-dev libldap-2.4-2 libldap2-dev sqlite3 nmap
+apt-get -y install build-essential bison flex cmake pkg-config libglib2.0-0 libglib2.0-dev libgnutls26 libgnutls-dev libpcap0.8 libpcap0.8-dev libgpgme11 libgpgme11-dev doxygen libuuid1 uuid-dev sqlfairy xmltoman libsqlite3-0 libsqlite3-dev libxml2-dev libxslt1.1 libxslt1-dev xsltproc libmicrohttpd-dev libldap-2.4-2 libldap2-dev sqlite3 nmap
 
 ./buildopenvascomponent.sh $LIBRARIES
 ./buildopenvascomponent.sh $SCANNER
